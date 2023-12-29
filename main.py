@@ -4,8 +4,6 @@ from PIL import Image
 import pillow_heif
 
 async def convertir_imagen(ruta_archivo_HEIC, ruta_archivo_JPG):
-
-
     heif_file = pillow_heif.read_heif(ruta_archivo_HEIC)
     image = Image.frombytes(
         heif_file.mode,
@@ -32,11 +30,10 @@ async def main():
     RUTA_CARPETA_HEIC = "./fotos"
     RUTA_CARPETA_JPG = "./fotospasadas"
 
-    # Crea una tare para revisar la carpeta.
-    asyncio.create_task(revisar_carpeta(RUTA_CARPETA_HEIC, RUTA_CARPETA_JPG))
-
     #Ejecuta el programo indefinidamente
     while True:
+        # Crea una tare para revisar la carpeta.
+        asyncio.create_task(revisar_carpeta(RUTA_CARPETA_HEIC, RUTA_CARPETA_JPG))
         await asyncio.sleep(1)
 
 # Inciar programa
